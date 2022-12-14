@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>~ Feliz 🎂 Cumpleanos Big Walt ~</title>
+  </head>
+  <body>
+    <div class="app">
+      <div class="bday-text">
+        <h1 class="h1-one">Happy Bday</h1>
+        <!-- <h1 class="h1-two">B-day</h1> -->
+      </div>
+      <div class="gameboard"></div>
+    </div>
+
+    <script>
+      var gameBoard = [
+        [0, 0, 0, 2, 0, 0, 3, 0, 3, 0, 0, 2, 0, 0, 0],
+        [0, 0, 4, 0, 0, 5, 0, 0, 0, 5, 0, 0, 4, 0, 0],
+        [0, 4, 0, 0, 4, 0, 0, 0, 0, 0, 4, 0, 0, 4, 0],
+        [2, 0, 0, 3, 0, 0, 0, 5, 0, 0, 0, 3, 0, 0, 2],
+        [0, 0, 4, 0, 0, 0, 4, 0, 4, 0, 0, 0, 4, 0, 0],
+        [0, 5, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 5, 0],
+        [3, 0, 0, 0, 4, 0, 0, 0, 0, 0, 4, 0, 0, 0, 3],
+        [0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0],
+        [3, 0, 0, 0, 4, 0, 0, 0, 0, 0, 4, 0, 0, 0, 3],
+        [0, 5, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 5, 0],
+        [0, 0, 4, 0, 0, 0, 4, 0, 4, 0, 0, 0, 4, 0, 0],
+        [2, 0, 0, 3, 0, 0, 0, 5, 0, 0, 0, 3, 0, 0, 2],
+        [0, 4, 0, 0, 4, 0, 0, 0, 0, 0, 4, 0, 0, 4, 0],
+        [0, 0, 4, 0, 0, 5, 0, 0, 0, 5, 0, 0, 4, 0, 0],
+        [0, 0, 0, 2, 0, 0, 3, 0, 3, 0, 0, 2, 0, 0, 0],
+      ];
+
+      gameBoard.forEach((row, i) => {
+        row.forEach((tile, idx) => {
+          let gameTile = document.createElement("div");
+          gameTile.className = "gametile";
+          gameTile.setAttribute("data-id", JSON.stringify({ x: idx, y: i }));
+
+          if (tile === 5) {
+            gameTile.classList.add("red");
+            gameTile.innerHTML = "DW";
+          }
+          if (tile === 4) {
+            gameTile.classList.add("blue");
+            gameTile.innerHTML = "DL";
+          }
+          if (tile === 3) {
+            gameTile.classList.add("green");
+            gameTile.innerHTML = "TL";
+          }
+
+          if (tile === 2) {
+            gameTile.classList.add("orange");
+            gameTile.innerHTML = "TW";
+          }
+
+          if (tile === 1) {
+            gameTile.classList.add("purple");
+            gameTile.innerHTML = "⭐️";
+          }
+          gameTile.onclick = (e) => addLetter(e);
+
+          document.querySelector(".gameboard").appendChild(gameTile);
+        });
+      });
+
+      let coords = JSON.parse(localStorage.getItem("coords")) || [];
+
+      function addLetter(e) {
+        var letter = prompt("Letter?");
+        let id = JSON.parse(e.target.getAttribute("data-id"));
+        let p = document.createElement("p");
+        id.letter = letter;
+        coords.push(id);
+        console.log(id);
+        localStorage.setItem("coords", JSON.stringify(coords));
+        // p.className = "gameLetter";
+        // p.innerHTML = letter;
+        // e.target.appendChild(p);
+      }
+
+      var savedCoords = [
+        { x: 7, y: 7, letter: "B" },
+        { x: 8, y: 7, letter: "D" },
+        { x: 9, y: 7, letter: "A" },
+        { x: 10, y: 7, letter: "Y" },
+        { x: 11, y: 7, letter: "S" },
+        { x: 7, y: 8, letter: "I" },
+        { x: 7, y: 9, letter: "T" },
+        { x: 7, y: 10, letter: "C" },
+        { x: 7, y: 11, letter: "H" },
+        { x: 8, y: 11, letter: "A" },
+        { x: 9, y: 11, letter: "H" },
+        { x: 10, y: 11, letter: "A" },
+        { x: 11, y: 4, letter: "N" },
+        { x: 11, y: 5, letter: "U" },
+        { x: 11, y: 6, letter: "R" },
+        { x: 11, y: 8, letter: "E" },
+        { x: 3, y: 9, letter: "N" },
+        { x: 4, y: 9, letter: "I" },
+        { x: 5, y: 9, letter: "G" },
+        { x: 6, y: 9, letter: "H" },
+        { x: 8, y: 9, letter: "C" },
+        { x: 9, y: 9, letter: "L" },
+        { x: 10, y: 9, letter: "U" },
+        { x: 11, y: 9, letter: "B" },
+        { x: 12, y: 9, letter: "S" },
+      ];
+
+      for (let i = 0; i < savedCoords.length; i++) {
+        setTimeout(() => {
+          let p = document.createElement("p");
+          p.className = "gameLetter";
+          p.innerHTML = savedCoords[i].letter;
+          let gameTiles = document.querySelectorAll(".gametile");
+          let tileNum = savedCoords[i].y * 15 + savedCoords[i].x;
+          //   console.log(l);
+          console.log(tileNum);
+          gameTiles[tileNum].appendChild(p);
+        }, i * 200);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --mainfont: "Montserrat", sans-serif;
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  font-family: var(--mainfont);
+  font-weight: 700;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+
+  background: linear-gradient(to right, black, rgb(71, 68, 68));
+}
+
+.gameboard {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  border: 1px solid black;
+  /* height: 400px;
+  width: 400px; */
+  background: white;
+  width: 300px;
+  height: 300px;
+}
+
+.gametile {
+  /* height: 100%;
+  width: 100%; */
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  background: lightgray;
+  color: white;
+  font-size: 0.5em;
+  font-weight: 700;
+}
+
+.blue {
+  background: skyblue;
+}
+
+.green {
+  background: limegreen;
+}
+
+.red {
+  background: red;
+}
+
+.orange {
+  background: orange;
+}
+
+.purple {
+  background: purple;
+}
+
+.bday-text {
+  /* border: 2px solid white; */
+  width: 90%;
+  margin: 0 auto;
+  height: 100px;
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+}
+
+.h1-one,
+.h1-two {
+  /* position: absolute; */
+
+  font-size: 3rem;
+  text-align: center;
+  color: red;
+  animation: glow 15s infinite;
+  font-weight: 200;
+  letter-spacing: 3px;
+  -webkit-box-reflect: bottom -5px linear-gradient(transparent, white);
+  --webkit-box-reflect: bottom -5px linear-gradient(transparent, white);
+  -webkit-box-reflect: below 0 linear-gradient(transparent, white);
+}
+
+.h1-two {
+  transform: translateX(3.5rem);
+}
+
+.gameLetter {
+  position: absolute;
+  color: black;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 1px white;
+  font-size: 1.25rem;
+}
+
+@keyframes glow {
+  25%,
+  50%,
+  75% {
+    text-shadow: 3px 5px 10px white, 3px 5px 30px white;
+  }
+
+  26%,
+  51%,
+  78% {
+    text-shadow: 3px 5px 20px white, 3px 5px 30px white, 3px 5px 50px white;
+  }
+}
